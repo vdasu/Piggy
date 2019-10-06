@@ -13,5 +13,13 @@ namespace Piggy
         {
 
         }
+
+        protected void passwordMatchValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if(password.Text != reenterPassword.Text)
+            {
+                args.IsValid = false;
+            }
+        }
     }
 }

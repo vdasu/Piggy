@@ -16,7 +16,10 @@ namespace Piggy
 
         protected void signup_Click(object sender, EventArgs e)
         {
-
+            if (Page.IsValid)
+            {
+                Response.Redirect("Register.aspx");
+            }
         }
     }
 }

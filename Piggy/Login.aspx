@@ -9,13 +9,16 @@
         <asp:RegularExpressionValidator ID="usernameValidator" runat="server" ControlToValidate="username" 
             ErrorMessage="Invalid User Name" Text="*" ValidationExpression="[a-zA-Z0-9]{1,10}" 
             ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
+
         <asp:TextBox ID="password" runat="server" TextMode="Password" placeholder="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ControlToValidate="password" ErrorMessage="Password required" 
             Text="*" ForeColor="Red" runat="server"></asp:RequiredFieldValidator>
         <br /> <br />
+
         <asp:Button ID="login" runat="server" Text="Login"/>
         <asp:Button ID="signup" runat="server" Text="Sign Up" onClick="signup_Click"/>
         <br />
-        <asp:ValidationSummary ID="validationSummary" runat="server" ForeColor="Red"/>
+
+        <asp:ValidationSummary ID="validationSummary" ForeColor="Red" runat="server"/>
     </asp:Panel>
 </asp:Content>
