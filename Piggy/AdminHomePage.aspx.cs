@@ -7,18 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace Piggy
 {
-    public partial class Register : Page
+    public partial class AdminHomePage : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void passwordMatchValidator_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            if(password.Text != reenterPassword.Text)
+            if(Session["User"] == null)
             {
-                args.IsValid = false;
+                Response.Write("<script>alert(User not found!);</script>");
+                Response.Redirect("Login.aspx");
             }
         }
     }

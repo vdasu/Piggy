@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Piggy.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Piggy.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -15,7 +15,7 @@
             Text="*" ForeColor="Red" runat="server"></asp:RequiredFieldValidator>
         <br /> <br />
 
-        <asp:Button ID="login" runat="server" Text="Login"/>
+        <asp:Button ID="login" runat="server" Text="Login" OnClick="login_Click"/>
         <asp:Button ID="signup" runat="server" Text="Sign Up" onClick="signup_Click"/>
         <br />
 

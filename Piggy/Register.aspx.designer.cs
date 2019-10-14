@@ -11,7 +11,7 @@ namespace Piggy
 {
 
 
-    public partial class WebForm2
+    public partial class Register
     {
 
         /// <summary>
