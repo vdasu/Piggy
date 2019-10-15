@@ -13,7 +13,7 @@ namespace Piggy
         {
             if(Session["User"] == null)
             {
-                Response.Write("<script>alert(User not found!);</script>");
+                Response.Write("<script>alert(Session Expired, login again.);</script>");
                 Response.Redirect("Login.aspx");
             }
         }

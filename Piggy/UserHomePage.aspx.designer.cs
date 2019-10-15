@@ -15,6 +15,15 @@ namespace Piggy
     {
 
         /// <summary>
+        /// header control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label header;
+
+        /// <summary>
         /// userHomePagePanel control.
         /// </summary>
         /// <remarks>
@@ -42,6 +51,33 @@ namespace Piggy
         protected global::System.Web.UI.WebControls.RadioButtonList searchCategoryList;
 
         /// <summary>
+        /// searchKeyLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label searchKeyLabel;
+
+        /// <summary>
+        /// searchKey control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox searchKey;
+
+        /// <summary>
+        /// searchKeyValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator searchKeyValidator;
+
+        /// <summary>
         /// search control.
         /// </summary>
         /// <remarks>
@@ -49,5 +85,23 @@ namespace Piggy
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button search;
+
+        /// <summary>
+        /// searchResultsLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label searchResultsLabel;
+
+        /// <summary>
+        /// searchGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView searchGridView;
     }
 }

@@ -12,13 +12,8 @@ namespace Piggy
 {
     public partial class Login : Page
     {
-        static string connectionString;
-        DataSet ds = new DataSet();
-
-        public static void MessageBox(Page page, string message)
-        {
-            ScriptManager.RegisterClientScriptBlock(page, page.GetType(), "alertMessage", "alert('" + message + "')alert", true);
-        }
+        private static readonly string connectionString;
+        private readonly DataSet ds = new DataSet();
 
         static Login()
         {
@@ -46,7 +41,7 @@ namespace Piggy
                 {
                     using (SqlCommand cmd = new SqlCommand())
                     {
-                        cmd.CommandText = "SELECT isAdmin FROM Users where UserName = @uname AND Password = @password";
+                        cmd.CommandText = "SELECT isAdmin FROM Users where UserName = @uname AND Password = @password COLLATE SQL_Latin1_General_CP1_CS_AS";
                         cmd.Parameters.AddWithValue("@uname", username.Text);
                         cmd.Parameters.AddWithValue("@password", password.Text);
                         cmd.Connection = conn;
@@ -66,7 +61,8 @@ namespace Piggy
                                 Response.Write("<script>alert('" + isAdmin + "');</script>");
                                 User user = new User(username.Text, password.Text, bool.Parse(isAdmin));
                                 Session["User"] = user;
-
+                                ds.Clear();
+                                
                                 if (isAdmin == "True")
                                 {
                                     Response.Redirect("AdminHomePage.aspx");

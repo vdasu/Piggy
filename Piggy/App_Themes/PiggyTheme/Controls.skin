@@ -15,6 +15,6 @@ Default skin template. The following skins are provided as examples only.
 --%>
 
 <asp:Panel HorizontalAlign="center" runat="server"/>
-<asp:RequiredFieldValidator Display="Dynamic" runat="server"/>
-<asp:RegularExpressionValidator Display="Dynamic" runat="server"/>
+<asp:RequiredFieldValidator Display="Dynamic" runat="server" Text="*" ForeColor="Red"/>
+<asp:RegularExpressionValidator Display="Dynamic" runat="server" Text="*" ForeColor="Red"/>
 <asp:CustomValidator Display="Dynamic" runat="server"/>
