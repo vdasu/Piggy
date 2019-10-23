@@ -38,9 +38,7 @@
             ErrorMessage="Password's must match" Text="*" ForeColor="Red" runat="server"></asp:CustomValidator>
         <br />
 
-        <asp:Label ID="userTypeLabel" runat="server" Text="User type: "></asp:Label>
-        <asp:CheckBox ID="isAdminCheckbox" runat="server" Text="Admin" />
-        <br />
+        <asp:Button ID="RegisterButton" runat="server" Text="Button" OnClick="RegisterButton_Click" />
 
         <asp:ValidationSummary ID="validationSummary" ForeColor="Red" runat="server" />
     </asp:Panel>

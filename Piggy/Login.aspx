@@ -16,7 +16,7 @@
         <br /> <br />
 
         <asp:Button ID="login" runat="server" Text="Login" OnClick="login_Click"/>
-        <asp:Button ID="signup" runat="server" Text="Sign Up" onClick="signup_Click"/>
+        <asp:Button ID="signup" runat="server" Text="Sign Up" onClick="signup_Click" CausesValidation="false" />
         <br />
 
         <asp:ValidationSummary ID="validationSummary" ForeColor="Red" runat="server"/>
