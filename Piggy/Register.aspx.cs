@@ -20,6 +20,9 @@ namespace Piggy
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Site1 master = (Site1)this.Master;
+            master.ShowLogout = false;
+
             if (IsPostBack) return;
         }
 
@@ -48,25 +51,9 @@ namespace Piggy
                         cmd.Parameters.AddWithValue("@Password", password.Text);
 
                         cmd.Connection = conn;
-                     
-
-                        try
-                        {
-                            conn.Open();
-                            cmd.ExecuteNonQuery();
-                            Response.Write("<script>alert('Registration completed!');</script>");
-                            Response.Redirect("Login.aspx");
-                        } 
-                        catch (Exception exp)
-                        {
-                            Response.Write("<script>alert('Oops! Something went wrong. Please try again...');</script>");
-                            Console.WriteLine(exp.ToString());
-                        }
-                        finally
-                        {
-                            conn.Close();
-                        }
-                    
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        Response.Redirect("Login.aspx");
                     }
                 }
             }

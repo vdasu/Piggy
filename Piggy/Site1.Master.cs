@@ -9,9 +9,28 @@ namespace Piggy
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
+        private bool showLogout = true;
+        public bool ShowLogout
+        {
+            get
+            {
+                return showLogout;
+            }
+
+            set
+            {
+                showLogout = value;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
+            logout.Visible = showLogout;
+        }
 
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session["User"] = null;
+            Response.Redirect("Login.aspx");
         }
     }
 }

@@ -21,7 +21,10 @@ namespace Piggy
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["User"] == null)
+            Site1 master = (Site1)this.Master;
+            master.ShowLogout = true;
+
+            if (Session["User"] == null)
             {
                 Response.Write("<script>alert(Session Expired, login again.);</script>");
                 Response.Redirect("Login.aspx");

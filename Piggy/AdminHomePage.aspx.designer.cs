@@ -15,6 +15,15 @@ namespace Piggy
     {
 
         /// <summary>
+        /// header control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label header;
+
+        /// <summary>
         /// notificationPanel control.
         /// </summary>
         /// <remarks>
@@ -24,6 +33,15 @@ namespace Piggy
         protected global::System.Web.UI.WebControls.Panel notificationPanel;
 
         /// <summary>
+        /// ReviewsDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ReviewsDataSource;
+
+        /// <summary>
         /// notificationGrid control.
         /// </summary>
         /// <remarks>
@@ -31,5 +49,14 @@ namespace Piggy
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView notificationGrid;
+
+        /// <summary>
+        /// ApprovalStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ApprovalStatus;
     }
 }

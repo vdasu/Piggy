@@ -13,7 +13,12 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            PIGGY Food Delivery
+            <div style="float:right">
+                <asp:Button ID="logout" Text="Log Out" runat="server" OnClick="logout_Click"/>
+            </div>
+            <h1>
+                PIGGY Food Delivery
+            </h1>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>

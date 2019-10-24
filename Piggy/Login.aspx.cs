@@ -22,6 +22,9 @@ namespace Piggy
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Site1 master = (Site1)this.Master;
+            master.ShowLogout = false;
+
             if (IsPostBack) return;
             if (Request.UrlReferrer != null) 
             {
