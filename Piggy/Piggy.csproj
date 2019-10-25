@@ -72,6 +72,7 @@
     <Content Include="Register.aspx" />
     <Content Include="UserHomePage.aspx" />
     <Content Include="AdminHomePage.aspx" />
+    <Content Include="Details.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="User.cs" />
@@ -110,6 +111,13 @@
     </Compile>
     <Compile Include="AdminHomePage.aspx.designer.cs">
       <DependentUpon>AdminHomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

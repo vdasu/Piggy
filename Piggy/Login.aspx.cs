@@ -43,7 +43,7 @@ namespace Piggy
 
         protected void login_Click(object sender, EventArgs e)
         {
-            string sqlQuery = "SELECT isAdmin FROM Users where UserName = @uname AND Password = @password COLLATE SQL_Latin1_General_CP1_CS_AS";
+            string sqlQuery = "SELECT Id, isAdmin FROM Users where UserName = @uname AND Password = @password COLLATE SQL_Latin1_General_CP1_CS_AS";
             if (Page.IsValid)
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -67,8 +67,9 @@ namespace Piggy
                             else
                             {
                                 string isAdmin = ds.Tables["user"].Rows[0]["isAdmin"].ToString();
+                                string userId = ds.Tables["user"].Rows[0]["Id"].ToString();
                                 Response.Write("<script>alert('" + isAdmin + "');</script>");
-                                User user = new User(username.Text, password.Text, bool.Parse(isAdmin));
+                                User user = new User(int.Parse(userId), username.Text, password.Text, bool.Parse(isAdmin));
                                 Session["User"] = user;
                                 ds.Clear();
                                 

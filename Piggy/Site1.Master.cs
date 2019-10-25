@@ -30,6 +30,7 @@ namespace Piggy
         protected void logout_Click(object sender, EventArgs e)
         {
             Session["User"] = null;
+            Session["newReview"] = null;
             Response.Redirect("Login.aspx");
         }
     }

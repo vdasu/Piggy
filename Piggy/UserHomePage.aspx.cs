@@ -31,9 +31,16 @@ namespace Piggy
             }
 
             user = (User)Session["User"];
-            searchResultsLabel.Visible = false;
-            searchKey.Visible = false;
-            searchKeyLabel.Visible = false;
+
+            if (!IsPostBack)
+            {
+                searchStatus.Visible = false;
+                search.Visible = false;
+                searchResultsLabel.Visible = false;
+                searchKey.Visible = false;
+                searchKeyLabel.Visible = false;
+            }
+
             header.Text = "Welcome " + user.userName + "!";
         }
         protected void search_Click(object sender, EventArgs e)
@@ -44,7 +51,8 @@ namespace Piggy
                 {
                     using(SqlCommand cmd = new SqlCommand())
                     {
-                        cmd.CommandText = String.Format("SELECT * FROM Restaurants where {0} = @value", searchCategoryList.SelectedValue);
+                        cmd.CommandText = String.Format("SELECT * FROM Restaurants where {0} = @value", searchCategoryList.SelectedItem.Value);
+                        // change it for avg rating
                         cmd.Parameters.AddWithValue("@value", searchKey.Text);
                         searchKey.Text = "";
                         cmd.Connection = conn;
@@ -54,8 +62,18 @@ namespace Piggy
                             conn.Open();
                             adapter.Fill(ds, "restaurants");
 
-                            searchGridView.DataSource = ds.Tables["restaurants"];
-                            searchGridView.DataBind();
+                            if(ds.Tables["restaurants"].Rows.Count==0)
+                            {
+                                // get zero query results
+                                searchGridView.Visible = false;
+                                searchStatus.Visible = true;
+                            } else
+                            {
+                                searchGridView.Visible = true;
+                                searchStatus.Visible = false;
+                                searchGridView.DataSource = ds.Tables["restaurants"];
+                                searchGridView.DataBind();
+                            }
 
                             ds.Clear();
                         }
@@ -68,8 +86,9 @@ namespace Piggy
         {
             searchKeyLabel.Visible = true;
             searchKey.Visible = true;
+            search.Visible = true;
 
-            searchKeyLabel.Text = "Enter " + searchCategoryList.SelectedValue + ": ";
+            searchKeyLabel.Text = "Enter " + searchCategoryList.SelectedItem.Text + ": ";
         }
     }
 }

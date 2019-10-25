@@ -31,6 +31,7 @@ namespace Piggy
                 Response.Redirect("Login.aspx");
             }
 
+            adminLanding.Visible = true;
             notificationPanel.Visible = false;
 
             user = (User)Session["User"];
@@ -41,28 +42,59 @@ namespace Piggy
         {
             if(notificationGrid.Rows.Count != 0)
             {
+                adminLanding.Visible = false;
                 notificationPanel.Visible = true;
+            }
+        }
+
+        private void updateApprovalStatus(string userId, string restaurantId, bool isApproved)
+        {
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using(SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = "UPDATE Reviews SET isApproved = @isApproved WHERE UserId = @userId AND RestaurantId=@restaurantId";
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@restaurantId", restaurantId);
+
+                    if(isApproved)
+                    {
+                        cmd.Parameters.AddWithValue("@isApproved", "1");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@isApproved", "0");
+                    }
+
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
         protected void notificationGrid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int index = 0;
-            GridViewRow row = null;
+            int index = Convert.ToInt32(e.CommandArgument);
             GridView grid = sender as GridView;
+            GridViewRow row = grid.Rows[index];
+            HiddenField userId = (HiddenField)row.FindControl("userId");
+            HiddenField restaurantId = (HiddenField)row.FindControl("restaurantId");
 
-            if(e.CommandName == "ApproveComment")
+            if (e.CommandName == "ApproveComment")
             {
-                index = Convert.ToInt32(e.CommandArgument);
-                row = grid.Rows[index];
-                ApprovalStatus.Text = "Row " + (index+1).ToString() + " approved";
+                updateApprovalStatus(userId.Value, restaurantId.Value, true);
+                ApprovalStatus.Text = "Row " + (index + 1).ToString() + " approved";
+                ApprovalStatus.Text += "Callbackx1";
             } 
             else if(e.CommandName == "RejectComment")
             {
-                index = Convert.ToInt32(e.CommandArgument);
-                row = grid.Rows[index];
-                ApprovalStatus.Text = "Row " + (index+1).ToString() + " rejected";
+                updateApprovalStatus(userId.Value, restaurantId.Value, false);
+                ApprovalStatus.Text = "Row " + (index + 1).ToString() + " rejected";
+                ApprovalStatus.Text += "Callbackx2";
             }
+
+            notificationGrid.DataBind();
         }
     }
 }

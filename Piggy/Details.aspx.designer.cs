@@ -11,70 +11,70 @@ namespace Piggy
 {
 
 
-    public partial class AdminHomePage
+    public partial class Details
     {
 
         /// <summary>
-        /// header control.
+        /// detailPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label header;
+        protected global::System.Web.UI.WebControls.Panel detailPanel;
 
         /// <summary>
-        /// notificationPanel control.
+        /// restaurantNameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel notificationPanel;
+        protected global::System.Web.UI.WebControls.Label restaurantNameLabel;
 
         /// <summary>
-        /// ReviewsDataSource control.
+        /// makeReviewPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ReviewsDataSource;
+        protected global::System.Web.UI.WebControls.Panel makeReviewPanel;
 
         /// <summary>
-        /// notificationGrid control.
+        /// commentEntry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView notificationGrid;
+        protected global::System.Web.UI.WebControls.TextBox commentEntry;
 
         /// <summary>
-        /// ApprovalStatus control.
+        /// ratingDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ApprovalStatus;
+        protected global::System.Web.UI.WebControls.DropDownList ratingDDL;
 
         /// <summary>
-        /// adminLanding control.
+        /// submitComment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel adminLanding;
+        protected global::System.Web.UI.WebControls.Button submitComment;
 
         /// <summary>
-        /// adminLabel control.
+        /// test control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label adminLabel;
+        protected global::System.Web.UI.WebControls.Label test;
     }
 }

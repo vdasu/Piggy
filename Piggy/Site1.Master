@@ -14,7 +14,7 @@
     <form id="form1" runat="server">
         <div>
             <div style="float:right">
-                <asp:Button ID="logout" Text="Log Out" runat="server" OnClick="logout_Click"/>
+                <asp:Button ID="logout" Text="Log Out" runat="server" CausesValidation="false" OnClick="logout_Click"/>
             </div>
             <h1>
                 PIGGY Food Delivery

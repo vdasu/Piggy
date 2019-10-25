@@ -11,8 +11,11 @@ namespace Piggy
         public string password { get; private set; }
         public bool isAdmin { get; private set; }
 
-        public User(string userName, string password, bool isAdmin)
+        public int userId { get; private set; }
+
+        public User(int userId, string userName, string password, bool isAdmin)
         {
+            this.userId = userId;
             this.userName = userName;
             this.password = password;
             this.isAdmin = isAdmin;
