@@ -5,6 +5,7 @@
     <br />
         <asp:Label ID="header" runat="server"></asp:Label>
     <br />
+
     <asp:Panel ID="notificationPanel" runat="server" Visible="false">
         <asp:SqlDataSource ID="ReviewsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:piggyDB %>" 
             SelectCommand="SELECT UserId,RestaurantId,Name,Comment,Rating FROM Reviews,Restaurants WHERE Reviews.RestaurantId = Restaurants.Id AND Comment IS NOT NULL AND isApproved IS NULL"></asp:SqlDataSource>
@@ -30,10 +31,15 @@
             </Columns>
         </asp:GridView>
     </asp:Panel>
+
     <asp:Panel ID="noNotifications" runat="server">
-        <asp:Button ID="createNewRestaurant" runat="server" Text="Create New Restaurant" OnClick="createNewRestaurant_Click"></asp:Button>
-        
+        <asp:Button ID="createNewRestaurant" runat="server" Text="Create New Restaurant" OnClick="createNewRestaurant_Click" />
+        <br />
+        <asp:Button ID="searchRestaurant" runat="server" Text="Search for Restaurant" OnClick="searchRestaurant_Click" />
+        <br />
+        <asp:Button ID="createNewAdmin" runat="server" Text="Create New Admin" OnClick="createNewAdmin_Click"/>
     </asp:Panel>
+
     <asp:Panel ID="createRestaurant" runat="server" Visible="false">
         <asp:Label ID="nameLabel" runat="server" Text="Enter restaurant name: "></asp:Label>
         <asp:TextBox ID="name" runat="server"></asp:TextBox>

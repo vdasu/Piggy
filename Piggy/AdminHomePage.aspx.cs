@@ -22,8 +22,15 @@ namespace Piggy
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            Site1 master = (Site1)this.Master;
-            master.ShowLogout = true;
+
+            if (Request.UrlReferrer != null)
+            {
+                string previousPage = Request.UrlReferrer.Segments.Skip(1).Take(1).SingleOrDefault();
+                if (previousPage == "Register.aspx")
+                {
+                    Response.Write("<script>alert('Registered successfully!');</script>");
+                }
+            }
 
             if (Session["User"] == null)
             {
@@ -123,6 +130,16 @@ namespace Piggy
         {
             noNotifications.Visible = false;
             createRestaurant.Visible = true;
+        }
+
+        protected void searchRestaurant_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Search.aspx");
+        }
+
+        protected void createNewAdmin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Register.aspx");
         }
     }
 }

@@ -10,12 +10,12 @@ using System.Web.UI.WebControls;
 
 namespace Piggy
 {
-    public partial class UserHomePage : Page
+    public partial class Search : Page
     {
         private static readonly string connectionString;
         private readonly DataSet ds = new DataSet();
         private User user;
-        static UserHomePage()
+        static Search()
         {
             connectionString = WebConfigurationManager.ConnectionStrings["piggyDB"].ConnectionString;
         }

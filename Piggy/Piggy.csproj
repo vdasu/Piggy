@@ -70,7 +70,7 @@
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
-    <Content Include="UserHomePage.aspx" />
+    <Content Include="Search.aspx" />
     <Content Include="AdminHomePage.aspx" />
     <Content Include="Details.aspx" />
   </ItemGroup>
@@ -98,12 +98,12 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserHomePage.aspx.cs">
-      <DependentUpon>UserHomePage.aspx</DependentUpon>
+    <Compile Include="Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserHomePage.aspx.designer.cs">
-      <DependentUpon>UserHomePage.aspx</DependentUpon>
+    <Compile Include="Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminHomePage.aspx.cs">
       <DependentUpon>AdminHomePage.aspx</DependentUpon>

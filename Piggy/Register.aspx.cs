@@ -13,6 +13,7 @@ namespace Piggy
     public partial class Register : Page
     {
         private static readonly string connectionString;
+        private bool isAdmin;
 
         static Register()
         {
@@ -22,6 +23,12 @@ namespace Piggy
         {
             Site1 master = (Site1)this.Master;
             master.ShowLogout = false;
+
+            if(Session["User"]!=null)
+            {
+                User user = (User)Session["User"];
+                isAdmin = user.isAdmin;
+            }
 
             if (IsPostBack) return;
         }
@@ -38,24 +45,33 @@ namespace Piggy
         {
             string sqlQuery = "INSERT INTO [Users](FName, LName, UserName, Password) values (@FName, @LName, @UserName, @Password)";
 
-            if (Page.IsValid)
+            if(isAdmin)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    using (SqlCommand cmd = new SqlCommand())
-                    {
-                        cmd.CommandText = sqlQuery;
-                        cmd.Parameters.AddWithValue("@FName", firstName.Text);
-                        cmd.Parameters.AddWithValue("@LName", lastName.Text);
-                        cmd.Parameters.AddWithValue("@UserName", username.Text);
-                        cmd.Parameters.AddWithValue("@Password", password.Text);
+                sqlQuery = "INSERT INTO [Users](FName, LName, UserName, Password, isAdmin) values (@FName, @LName, @UserName, @Password, 1)";
+            }
 
-                        cmd.Connection = conn;
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        Response.Redirect("Login.aspx");
-                    }
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = sqlQuery;
+                    cmd.Parameters.AddWithValue("@FName", firstName.Text);
+                    cmd.Parameters.AddWithValue("@LName", lastName.Text);
+                    cmd.Parameters.AddWithValue("@UserName", username.Text);
+                    cmd.Parameters.AddWithValue("@Password", password.Text);
+
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
                 }
+            }
+            if(isAdmin)
+            {
+                Response.Redirect("AdminHomePage.aspx");
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
             }
         }
     }

@@ -1,11 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="UserHomePage.aspx.cs" Inherits="Piggy.UserHomePage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="Piggy.Search" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
     <asp:Label ID="header" runat="server"></asp:Label>
     <br />
-    <asp:Panel ID="userHomePagePanel" runat="server">
+
+    <asp:Panel ID="searchPagePanel" runat="server">
         <asp:Label ID="searchCategoryLabel" runat="server" Text="Search by: "></asp:Label>
         <asp:RadioButtonList ID="searchCategoryList" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="true" 
             OnSelectedIndexChanged="searchCategoryList_SelectedIndexChanged" runat="server">
@@ -28,7 +29,6 @@
         <br />
         <asp:GridView ID="searchGridView" runat="server" HorizontalAlign="Center" AutoGenerateColumns="false" AllowPaging="true" PageSize="5">
             <Columns>
-
                 <asp:HyperLinkField HeaderText=" Restaurant Name" SortExpression="Name" DataTextField="Name" DataNavigateUrlFields="Name, Id" DataNavigateUrlFormatString="Details.aspx?restaurantName={0}&restaurantId={1}">
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:HyperLinkField>
@@ -44,10 +44,8 @@
                 <asp:BoundField DataField="Views" HeaderText="Views">
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-
             </Columns>
         </asp:GridView>
-
         <asp:Label ID="searchStatus" Text="No results found." runat="server"></asp:Label>
     </asp:Panel>
 </asp:Content>

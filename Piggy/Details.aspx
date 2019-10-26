@@ -30,9 +30,13 @@
                  <asp:ListItem>4</asp:ListItem>
                  <asp:ListItem>5</asp:ListItem>
              </asp:DropDownList>
+            <br />
+            <asp:Button ID="submitComment" runat="server" onClick="submitComment_Click"/>
         </asp:Panel>
 
-        <asp:Button ID="submitComment" runat="server" onClick="submitComment_Click"/>
+        <asp:Panel ID="generateReportPanel" runat="server">
+
+        </asp:Panel>
     </asp:Panel>
 
 </asp:Content>

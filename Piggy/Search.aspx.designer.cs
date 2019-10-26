@@ -11,7 +11,7 @@ namespace Piggy
 {
 
 
-    public partial class UserHomePage
+    public partial class Search
     {
 
         /// <summary>
@@ -24,13 +24,13 @@ namespace Piggy
         protected global::System.Web.UI.WebControls.Label header;
 
         /// <summary>
-        /// userHomePagePanel control.
+        /// searchPagePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel userHomePagePanel;
+        protected global::System.Web.UI.WebControls.Panel searchPagePanel;
 
         /// <summary>
         /// searchCategoryLabel control.

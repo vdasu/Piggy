@@ -29,6 +29,11 @@ namespace Piggy
                 Response.Redirect("~/Login.aspx");
             }
 
+            if(user.isAdmin == true)
+            {
+                makeReviewPanel.Visible = false;
+            }
+
             restaurantNameParam = Request.QueryString["restaurantName"];
             restaurantIdParam = Request.QueryString["restaurantId"];
 
