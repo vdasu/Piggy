@@ -32,7 +32,10 @@ namespace Piggy
                 if (previousPage == "Register.aspx")
                 {
                     Response.Write("<script>alert('Registered successfully!');</script>");
-                }  
+                }  else if(previousPage == "AdminHomePage.aspx" || previousPage == "UserHomePage.aspx")
+                {
+                    Response.Write("<script>alert(Session Expired, login again.);</script>");
+                }
             }
         }
 

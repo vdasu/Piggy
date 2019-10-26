@@ -26,10 +26,10 @@
 
         <asp:Label ID="searchResultsLabel" runat="server" Text="Search results: "></asp:Label>
         <br />
-        <asp:GridView ID="searchGridView" runat="server" HorizontalAlign="Center" AutoGenerateColumns="false">
+        <asp:GridView ID="searchGridView" runat="server" HorizontalAlign="Center" AutoGenerateColumns="false" AllowPaging="true" PageSize="5">
             <Columns>
 
-                <asp:HyperLinkField HeaderText="Name" SortExpression="Name" DataTextField="Name" DataNavigateUrlFields="Name, Id" DataNavigateUrlFormatString="Details.aspx?restaurantName={0}&restaurantId={1}">
+                <asp:HyperLinkField HeaderText=" Restaurant Name" SortExpression="Name" DataTextField="Name" DataNavigateUrlFields="Name, Id" DataNavigateUrlFormatString="Details.aspx?restaurantName={0}&restaurantId={1}">
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:HyperLinkField>
 
@@ -38,6 +38,10 @@
                 </asp:BoundField>
 
                 <asp:BoundField DataField="Cuisine" HeaderText="Cuisine">
+                    <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundField>
+
+                <asp:BoundField DataField="Views" HeaderText="Views">
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
 

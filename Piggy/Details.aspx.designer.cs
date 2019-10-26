@@ -24,6 +24,15 @@ namespace Piggy
         protected global::System.Web.UI.WebControls.Panel detailPanel;
 
         /// <summary>
+        /// descriptionPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel descriptionPanel;
+
+        /// <summary>
         /// restaurantNameLabel control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,33 @@ namespace Piggy
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label restaurantNameLabel;
+
+        /// <summary>
+        /// restaurantDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label restaurantDescription;
+
+        /// <summary>
+        /// restaurantRatingLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label restaurantRatingLabel;
+
+        /// <summary>
+        /// restaurantRating control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label restaurantRating;
 
         /// <summary>
         /// makeReviewPanel control.
@@ -67,14 +103,5 @@ namespace Piggy
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button submitComment;
-
-        /// <summary>
-        /// test control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label test;
     }
 }

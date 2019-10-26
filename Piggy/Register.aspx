@@ -38,7 +38,7 @@
             ErrorMessage="Password's must match" Text="*" ForeColor="Red" runat="server"></asp:CustomValidator>
         <br />
 
-        <asp:Button ID="RegisterButton" runat="server" Text="Button" OnClick="RegisterButton_Click" />
+        <asp:Button ID="RegisterButton" runat="server" Text="Register" OnClick="RegisterButton_Click" />
 
         <asp:ValidationSummary ID="validationSummary" ForeColor="Red" runat="server" />
     </asp:Panel>

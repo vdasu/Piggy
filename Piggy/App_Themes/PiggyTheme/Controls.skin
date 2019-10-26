@@ -18,3 +18,4 @@ Default skin template. The following skins are provided as examples only.
 <asp:RequiredFieldValidator Display="Dynamic" runat="server" Text="*" ForeColor="Red"/>
 <asp:RegularExpressionValidator Display="Dynamic" runat="server" Text="*" ForeColor="Red"/>
 <asp:CustomValidator Display="Dynamic" runat="server"/>
+<asp:Label Width="400" Height= "80" Style="overflow:scroll" runat="server" SkinID="description"></asp:Label>

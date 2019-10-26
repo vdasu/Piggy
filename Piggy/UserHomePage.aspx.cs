@@ -26,7 +26,6 @@ namespace Piggy
 
             if (Session["User"] == null)
             {
-                Response.Write("<script>alert(Session Expired, login again.);</script>");
                 Response.Redirect("Login.aspx");
             }
 
@@ -51,8 +50,14 @@ namespace Piggy
                 {
                     using(SqlCommand cmd = new SqlCommand())
                     {
-                        cmd.CommandText = String.Format("SELECT * FROM Restaurants where {0} = @value", searchCategoryList.SelectedItem.Value);
-                        // change it for avg rating
+                        if (searchCategoryList.SelectedItem.Value == "AvgRating")
+                        {
+                            cmd.CommandText = "SELECT * FROM Restaurants WHERE AvgRating >= @value";
+                        }
+                        else
+                        {
+                            cmd.CommandText = String.Format("SELECT * FROM Restaurants WHERE {0} = @value", searchCategoryList.SelectedItem.Value);
+                        }                        
                         cmd.Parameters.AddWithValue("@value", searchKey.Text);
                         searchKey.Text = "";
                         cmd.Connection = conn;
@@ -64,7 +69,6 @@ namespace Piggy
 
                             if(ds.Tables["restaurants"].Rows.Count==0)
                             {
-                                // get zero query results
                                 searchGridView.Visible = false;
                                 searchStatus.Visible = true;
                             } else

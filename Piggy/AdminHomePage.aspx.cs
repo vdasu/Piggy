@@ -27,22 +27,28 @@ namespace Piggy
 
             if (Session["User"] == null)
             {
-                Response.Write("<script>alert(Session Expired, login again.);</script>");
                 Response.Redirect("Login.aspx");
             }
 
-            adminLanding.Visible = true;
-            notificationPanel.Visible = false;
+            if (!IsPostBack)
+            {
+                user = (User)Session["User"];
+                if(user.isAdmin == false)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                header.Text = "Welcome " + user.userName + "!";
+            }
 
-            user = (User)Session["User"];
-            header.Text = "Welcome " + user.userName + "!";
+            noNotifications.Visible = true;
+            notificationPanel.Visible = false;
         }
 
         protected void Page_LoadComplete(object sender, EventArgs e)
         {
             if(notificationGrid.Rows.Count != 0)
             {
-                adminLanding.Visible = false;
+                noNotifications.Visible = false;
                 notificationPanel.Visible = true;
             }
         }
@@ -84,17 +90,39 @@ namespace Piggy
             if (e.CommandName == "ApproveComment")
             {
                 updateApprovalStatus(userId.Value, restaurantId.Value, true);
-                ApprovalStatus.Text = "Row " + (index + 1).ToString() + " approved";
-                ApprovalStatus.Text += "Callbackx1";
             } 
             else if(e.CommandName == "RejectComment")
             {
                 updateApprovalStatus(userId.Value, restaurantId.Value, false);
-                ApprovalStatus.Text = "Row " + (index + 1).ToString() + " rejected";
-                ApprovalStatus.Text += "Callbackx2";
             }
 
             notificationGrid.DataBind();
+        }
+
+        protected void CreateButton_Click(object sender, EventArgs e)
+        {
+            string sqlQuery = "INSERT INTO Restaurants([Name], Location, Cuisine, Description) VALUES(@name, @location, @cuisine, @description)";
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using(SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = sqlQuery;
+                    cmd.Parameters.AddWithValue("@name", name.Text);
+                    cmd.Parameters.AddWithValue("@location", location.Text);
+                    cmd.Parameters.AddWithValue("@cuisine", cuisine.Text);
+                    cmd.Parameters.AddWithValue("@description", description.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            createRestaurant.Visible = false;
+        }
+
+        protected void createNewRestaurant_Click(object sender, EventArgs e)
+        {
+            noNotifications.Visible = false;
+            createRestaurant.Visible = true;
         }
     }
 }

@@ -13,7 +13,6 @@ namespace Piggy
     {
         private User user;
         private static readonly string connectionString;
-        //private bool newReview;
         private string restaurantNameParam;
         private string restaurantIdParam;
 
@@ -30,13 +29,15 @@ namespace Piggy
                 Response.Redirect("~/Login.aspx");
             }
 
-            // GET PARAMS
-
             restaurantNameParam = Request.QueryString["restaurantName"];
             restaurantIdParam = Request.QueryString["restaurantId"];
 
+            restaurantRatingLabel.Style["display"] = "block";
+            restaurantRatingLabel.Style["width"] = "50px";
+
             if (!IsPostBack)
             {
+                getDescriptionAndRating(restaurantIdParam);
                 Tuple<string, string> prevReviewTuple = getPrevReviewIfAny(restaurantIdParam, user.userId.ToString());
                 bool newReview;
                 if (prevReviewTuple != null)
@@ -62,6 +63,32 @@ namespace Piggy
             }
 
             restaurantNameLabel.Text = restaurantNameParam;
+        }
+
+        private void getDescriptionAndRating(string restaurantId)
+        {
+            String sqlQuery = "SELECT Description, AvgRating FROM Restaurants WHERE Id = @restaurantId";
+
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = sqlQuery;
+                    cmd.Parameters.AddWithValue("@restaurantId", restaurantId);
+                    cmd.Connection = conn;
+                    conn.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        if(sdr.Read())
+                        {
+                            restaurantDescription.Text = sdr["Description"].ToString();
+                            restaurantRating.Text = sdr["AvgRating"].ToString();
+                        }
+                    }
+                    cmd.CommandText = "UPDATE Restaurants SET [Views] = [Views] + 1 WHERE ID = @restaurantId";;
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         private Tuple<string, string> getPrevReviewIfAny(string restaurantId, string userId)
@@ -109,9 +136,18 @@ namespace Piggy
                     cmd.Parameters.AddWithValue("@newRating", newRating);
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                }
-            } 
 
+                    cmd.CommandText = "SELECT Description, AvgRating FROM Restaurants WHERE Id = @restaurantId";
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        if (sdr.Read())
+                        {
+                            restaurantDescription.Text = sdr["Description"].ToString();
+                            restaurantRating.Text = sdr["AvgRating"].ToString();
+                        }
+                    }
+                }
+            }
         }
 
         private void createReview(string restaurantId, string userId, string comment, string rating)
@@ -129,6 +165,16 @@ namespace Piggy
                     cmd.Parameters.AddWithValue("@rating", rating);
                     conn.Open();
                     cmd.ExecuteNonQuery();
+                    
+                    cmd.CommandText = "SELECT Description, AvgRating FROM Restaurants WHERE Id = @restaurantId";
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        if (sdr.Read())
+                        {
+                            restaurantDescription.Text = sdr["Description"].ToString();
+                            restaurantRating.Text = sdr["AvgRating"].ToString();
+                        }
+                    }
                 }
             }
 

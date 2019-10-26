@@ -5,8 +5,20 @@
 
     <asp:Panel ID="detailPanel" runat="server">
 
-        <asp:Label ID="restaurantNameLabel" runat="server"></asp:Label>
-        //Restaurant description goes here
+        <asp:Panel ID="descriptionPanel" runat="server">
+            <div style="float:left">
+                <asp:Label ID="restaurantNameLabel" runat="server" ></asp:Label>
+                <br />
+                <asp:Label ID="restaurantDescription" runat="server" SkinID="description"></asp:Label>
+            </div>
+
+            <div style="float:right">
+                <asp:Label ID="restaurantRatingLabel" Text="Rating: " runat="server" ></asp:Label>
+                <asp:Label ID="restaurantRating" runat="server"></asp:Label>
+            </div>
+        </asp:Panel>
+
+        <br /><br />
 
         <asp:Panel ID="makeReviewPanel" runat="server">
              <asp:TextBox ID="commentEntry" runat="server"></asp:TextBox>
@@ -21,7 +33,6 @@
         </asp:Panel>
 
         <asp:Button ID="submitComment" runat="server" onClick="submitComment_Click"/>
-        <asp:Label ID="test" runat="server"></asp:Label>
     </asp:Panel>
 
 </asp:Content>
