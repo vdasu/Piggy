@@ -49,11 +49,19 @@ namespace Piggy
                 {
                     MostViewedPanel.Visible = false;
                 }
+
                 else
                 {
-                    MostViewedLabel.Text = userViews.MaxViewedRestaurant;
-                }
+                    // Get id and name from the retrieved string
 
+                    string restaurantIdParam = userViews.MaxViewedRestaurant.Split('_')[0];
+                    string restaurantNameParam = userViews.MaxViewedRestaurant.Split('_')[1];
+
+                    // hlink to the details page
+
+                    MostViewedHLink.Text = restaurantNameParam;
+                    String.Format(MostViewedHLink.NavigateUrl, restaurantIdParam, restaurantNameParam);
+                }
             }
 
             header.Text = "Welcome " + user.userName + "!";

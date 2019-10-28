@@ -48,7 +48,8 @@ namespace Piggy
                 string userViewCookie = Request.Cookies[this.user.userName].Value;
                 Views userViews = new JavaScriptSerializer().Deserialize<Views>(userViewCookie);
 
-                userViews.UpdateMostViewed(restaurantNameParam);
+                string visitedRestaurant = restaurantIdParam + "_" + restaurantNameParam;
+                userViews.UpdateMostViewed(visitedRestaurant);
 
                 // delete the existing cookie and add the updated one as new cookie
 

@@ -24,6 +24,9 @@ namespace Piggy
         {
             // to update the MaxViewCount and MaxViewedRestaurant
             // returns new most viewed restaurant name and counter
+
+            // visitedRestaurant should be a restaurantId + ; + restaurantName
+
             int previousViewCount;
             if (this.viewCountDict.ContainsKey(visitedRestaurant))
             {

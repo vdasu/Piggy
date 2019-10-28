@@ -28,7 +28,7 @@
         <asp:Panel ID="MostViewedPanel" runat="server">
 
             Most viewed restaurant by you: <br />
-            <asp:Label ID="MostViewedLabel" runat="server"></asp:Label>
+            <asp:HyperLink ID="MostViewedHLink" runat="server" NavigateUrl="~/Details.aspx?restaurantId={0}&restaurantName={1}">HyperLink</asp:HyperLink>
 
         </asp:Panel>
 
