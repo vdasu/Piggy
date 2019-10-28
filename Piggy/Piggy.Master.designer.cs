@@ -11,7 +11,7 @@ namespace Piggy
 {
 
 
-    public partial class Site1
+    public partial class Piggy
     {
 
         /// <summary>

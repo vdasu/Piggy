@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="Piggy.Details" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Piggy.Master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="Piggy.Details" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -18,7 +18,7 @@
             </div>
         </asp:Panel>
 
-        <br /><br />
+        <br /><br /><br /><br /><br /><br /><br /><br />
 
         <asp:Panel ID="makeReviewPanel" runat="server">
              <asp:TextBox ID="commentEntry" runat="server"></asp:TextBox>
@@ -34,8 +34,24 @@
             <asp:Button ID="submitComment" runat="server" onClick="submitComment_Click"/>
         </asp:Panel>
 
-        <asp:Panel ID="generateReportPanel" runat="server">
+        <br /><br />
 
+        <asp:Panel ID="commentsPanel" runat="server">
+            <asp:GridView ID="commentsGrid" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="5" HorizontalAlign="Center">
+                <Columns>
+                    <asp:BoundField DataField="UserName" HeaderText="User Name">
+                        <ItemStyle HorizontalAlign="Center" />
+                    </asp:BoundField>
+                    <asp:TemplateField HeaderText="Comments">
+                        <ItemTemplate>
+                            <asp:Label ID="commentsLabel" runat="server" Text='<%# Eval("Comment") %>' SkinID="description"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="Rating" HeaderText="Rating">
+                        <ItemStyle HorizontalAlign="Center"/>
+                    </asp:BoundField>
+                </Columns>
+            </asp:GridView>
         </asp:Panel>
     </asp:Panel>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="Piggy.Search" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Piggy.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="Piggy.Search" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -26,8 +26,8 @@
         <br />
 
         <asp:Panel ID="MostViewedPanel" runat="server">
-
-            Most viewed restaurant by you: <br />
+            <asp:Label ID="mostViewedLabel" Text="Most viewed restaurant by you: " runat="server"></asp:Label>
+            <br />
             <asp:HyperLink ID="MostViewedHLink" runat="server" NavigateUrl="~/Details.aspx?restaurantId={0}&restaurantName={1}">HyperLink</asp:HyperLink>
 
         </asp:Panel>

@@ -22,4 +22,9 @@ Default skin template. The following skins are provided as examples only.
 <asp:GridView runat="server" BackColor="White" >
    <AlternatingRowStyle BackColor="PaleVioletRed"/>
 </asp:GridView>
-<asp:Label Font-Name="Lucida Calligraphy" SkinID="labelH1" runat="server"></asp:Label>
+<asp:Label Font-Name="Verdana" SkinID="labelH1" runat="server"></asp:Label>
+<asp:Label Font-Name="Georgia" runat="server" Font-Size="17px"></asp:Label>
+<asp:TextBox Font-Name="Century" runat="server" Font-Size="17px"></asp:TextBox>
+<asp:Button Font-Name="Algerian" runat="server" Font-Size="17px"></asp:Button>
+<asp:RadioButtonList Font-Name="Cursive" Font-Size="17px" runat="server"></asp:RadioButtonList>
+<asp:HyperLink Font-Name="Arial" Font-Size="17px" runat="server"></asp:HyperLink>

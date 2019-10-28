@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -62,7 +63,7 @@ namespace Piggy
                 Response.Cookies.Add(cookie);
 
                 // restaurant descriptions
-
+                getComments(user.userId.ToString(), restaurantIdParam);
                 getDescriptionAndRating(restaurantIdParam);
                 Tuple<string, string> prevReviewTuple = getPrevReviewIfAny(restaurantIdParam, user.userId.ToString());
                 bool newReview;
@@ -89,6 +90,30 @@ namespace Piggy
             }
 
             restaurantNameLabel.Text = restaurantNameParam;
+        }
+
+        private void getComments(string userId, string restaurantId)
+        {
+            String sqlQuery = "SELECT UserName, Comment, Rating from Reviews, Users WHERE Users.Id=Reviews.UserID AND RestaurantId=@restaurantId AND Users.Id != @userId AND isApproved=1";
+
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using(SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = sqlQuery;
+                    cmd.Parameters.AddWithValue("@restaurantId", restaurantId);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Connection = conn;
+                    DataSet ds = new DataSet();
+                    using(SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        conn.Open();
+                        adapter.Fill(ds, "comments");
+                    }
+                    commentsGrid.DataSource = ds.Tables["comments"];
+                    commentsGrid.DataBind();
+                }
+            }
         }
 
         private void getDescriptionAndRating(string restaurantId)

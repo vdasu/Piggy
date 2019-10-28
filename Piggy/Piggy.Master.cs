@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Piggy
 {
-    public partial class Site1 : System.Web.UI.MasterPage
+    public partial class Piggy : System.Web.UI.MasterPage
     {
         private bool showLogout = true;
         public bool ShowLogout

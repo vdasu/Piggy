@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Piggy.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Piggy.Master.cs" Inherits="Piggy.Piggy" %>
 
 <!DOCTYPE html>
 

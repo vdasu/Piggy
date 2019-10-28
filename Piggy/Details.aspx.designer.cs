@@ -105,12 +105,21 @@ namespace Piggy
         protected global::System.Web.UI.WebControls.Button submitComment;
 
         /// <summary>
-        /// generateReportPanel control.
+        /// commentsPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel generateReportPanel;
+        protected global::System.Web.UI.WebControls.Panel commentsPanel;
+
+        /// <summary>
+        /// commentsGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView commentsGrid;
     }
 }

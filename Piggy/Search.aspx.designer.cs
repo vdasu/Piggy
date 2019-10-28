@@ -96,6 +96,15 @@ namespace Piggy
         protected global::System.Web.UI.WebControls.Panel MostViewedPanel;
 
         /// <summary>
+        /// mostViewedLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label mostViewedLabel;
+
+        /// <summary>
         /// MostViewedHLink control.
         /// </summary>
         /// <remarks>
