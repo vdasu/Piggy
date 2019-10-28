@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -42,6 +43,25 @@ namespace Piggy
 
             if (!IsPostBack)
             {
+                // fetch and update views object
+
+                string userViewCookie = Request.Cookies[this.user.userName].Value;
+                Views userViews = new JavaScriptSerializer().Deserialize<Views>(userViewCookie);
+
+                userViews.UpdateMostViewed(restaurantNameParam);
+
+                // delete the existing cookie and add the updated one as new cookie
+
+                Request.Cookies[user.userName].Expires = DateTime.Now.AddDays(-1);
+
+                HttpCookie cookie = new HttpCookie(user.userName);
+                cookie.Expires = DateTime.Now.AddHours(1);
+                string userViewsJson = new JavaScriptSerializer().Serialize(userViews);
+                cookie.Value = userViewsJson;
+                Response.Cookies.Add(cookie);
+
+                // restaurant descriptions
+
                 getDescriptionAndRating(restaurantIdParam);
                 Tuple<string, string> prevReviewTuple = getPrevReviewIfAny(restaurantIdParam, user.userId.ToString());
                 bool newReview;

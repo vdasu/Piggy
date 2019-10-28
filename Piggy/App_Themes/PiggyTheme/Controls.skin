@@ -19,3 +19,7 @@ Default skin template. The following skins are provided as examples only.
 <asp:RegularExpressionValidator Display="Dynamic" runat="server" Text="*" ForeColor="Red"/>
 <asp:CustomValidator Display="Dynamic" runat="server"/>
 <asp:Label Width="400" Height= "80" Style="overflow:scroll" runat="server" SkinID="description"></asp:Label>
+<asp:GridView runat="server" BackColor="White" >
+   <AlternatingRowStyle BackColor="PaleVioletRed"/>
+</asp:GridView>
+<asp:Label Font-Name="Lucida Calligraphy" SkinID="labelH1" runat="server"></asp:Label>

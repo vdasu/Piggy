@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -38,6 +39,21 @@ namespace Piggy
                 searchResultsLabel.Visible = false;
                 searchKey.Visible = false;
                 searchKeyLabel.Visible = false;
+
+                // fetch the cookie and views object
+
+                string userViewCookieJson = Request.Cookies[this.user.userName].Value;
+                Views userViews = new JavaScriptSerializer().Deserialize<Views>(userViewCookieJson);
+
+                if (userViews.MaxViewedRestaurant == String.Empty)
+                {
+                    MostViewedPanel.Visible = false;
+                }
+                else
+                {
+                    MostViewedLabel.Text = userViews.MaxViewedRestaurant;
+                }
+
             }
 
             header.Text = "Welcome " + user.userName + "!";
@@ -46,6 +62,7 @@ namespace Piggy
         {
             if (Page.IsValid)
             {
+                MostViewedPanel.Visible = false;
                 using(SqlConnection conn = new SqlConnection(connectionString))
                 {
                     using(SqlCommand cmd = new SqlCommand())

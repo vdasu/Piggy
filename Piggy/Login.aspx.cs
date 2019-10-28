@@ -7,6 +7,7 @@ using System.Web.Configuration;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.Web.Script.Serialization;
 
 namespace Piggy
 {
@@ -71,9 +72,17 @@ namespace Piggy
                             {
                                 string isAdmin = ds.Tables["user"].Rows[0]["isAdmin"].ToString();
                                 string userId = ds.Tables["user"].Rows[0]["Id"].ToString();
-                                Response.Write("<script>alert('" + isAdmin + "');</script>");
                                 User user = new User(int.Parse(userId), username.Text, password.Text, bool.Parse(isAdmin));
                                 Session["User"] = user;
+                                if (Request.Cookies[user.userName] == null)
+                                {
+                                    HttpCookie cookie = new HttpCookie(user.userName);
+                                    cookie.Expires = DateTime.Now.AddHours(1);
+                                    string userViewsJson = new JavaScriptSerializer().Serialize(new Views());
+                                    cookie.Value = userViewsJson;
+                                    Response.Cookies.Add(cookie);
+                                    Response.Write("<script>alert('"+userViewsJson+"');</script>");
+                                }
                                 ds.Clear();
                                 
                                 if (isAdmin == "True")

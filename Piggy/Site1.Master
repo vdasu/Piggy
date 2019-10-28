@@ -17,11 +17,15 @@
                 <asp:Button ID="logout" Text="Log Out" runat="server" CausesValidation="false" OnClick="logout_Click"/>
             </div>
             <h1>
-                PIGGY Food Delivery
+                <asp:Label Text="PIGGY Food Delivery" runat="server" SkinID="labelH1"></asp:Label>
             </h1>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
     </form>
+    <footer style="width: 100%;position:fixed;bottom: 0px;text-align:center;font-size:15px">
+            <hr />
+            Built by Vishnu Asutosh Dasu and Rajan Sien Aggarwal
+    </footer>
 </body>
 </html>

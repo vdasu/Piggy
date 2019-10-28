@@ -119,6 +119,7 @@
     <Compile Include="Details.aspx.designer.cs">
       <DependentUpon>Details.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\PiggyTheme\Controls.skin" />

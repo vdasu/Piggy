@@ -25,6 +25,13 @@
         <asp:Button ID="search" runat="server" Text="Search" OnClick="search_Click" />
         <br />
 
+        <asp:Panel ID="MostViewedPanel" runat="server">
+
+            Most viewed restaurant by you: <br />
+            <asp:Label ID="MostViewedLabel" runat="server"></asp:Label>
+
+        </asp:Panel>
+
         <asp:Label ID="searchResultsLabel" runat="server" Text="Search results: "></asp:Label>
         <br />
         <asp:GridView ID="searchGridView" runat="server" HorizontalAlign="Center" AutoGenerateColumns="false" AllowPaging="true" PageSize="5">
