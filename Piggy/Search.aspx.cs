@@ -60,7 +60,7 @@ namespace Piggy
                     // hlink to the details page
 
                     MostViewedHLink.Text = restaurantNameParam;
-                    String.Format(MostViewedHLink.NavigateUrl, restaurantIdParam, restaurantNameParam);
+                    MostViewedHLink.NavigateUrl = String.Format(MostViewedHLink.NavigateUrl, restaurantIdParam, restaurantNameParam);
                 }
             }
 

@@ -77,7 +77,7 @@ namespace Piggy
                                 if (Request.Cookies[user.userName] == null)
                                 {
                                     HttpCookie cookie = new HttpCookie(user.userName);
-                                    cookie.Expires = DateTime.Now.AddHours(1);
+                                    cookie.Expires = DateTime.Now.AddMinutes(20);
                                     string userViewsJson = new JavaScriptSerializer().Serialize(new Views());
                                     cookie.Value = userViewsJson;
                                     Response.Cookies.Add(cookie);
