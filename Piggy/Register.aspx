@@ -22,6 +22,8 @@
         <asp:RegularExpressionValidator ID="usernameRegexValidator" runat="server" ControlToValidate="Username" 
             ErrorMessage="Invalid User Name" Text="*" ValidationExpression="[a-zA-Z0-9]{1,10}" 
             ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
+        <asp:CustomValidator ID="usernameUniqueValidator" OnServerValidate="usernameUniqueValidator_ServerValidate"
+            ErrorMessage="User name already exists" Text="*" ForeColor="Red" runat="server"></asp:CustomValidator>
         <br />
 
         <asp:Label ID="passwordLabel" runat="server" Text="Enter password: "></asp:Label>

@@ -74,6 +74,7 @@ namespace Piggy
                                 string userId = ds.Tables["user"].Rows[0]["Id"].ToString();
                                 User user = new User(int.Parse(userId), username.Text, password.Text, bool.Parse(isAdmin));
                                 Session["User"] = user;
+
                                 if (Request.Cookies[user.userName] == null)
                                 {
                                     HttpCookie cookie = new HttpCookie(user.userName);
@@ -81,7 +82,6 @@ namespace Piggy
                                     string userViewsJson = new JavaScriptSerializer().Serialize(new Views());
                                     cookie.Value = userViewsJson;
                                     Response.Cookies.Add(cookie);
-                                    Response.Write("<script>alert('"+userViewsJson+"');</script>");
                                 }
                                 ds.Clear();
                                 

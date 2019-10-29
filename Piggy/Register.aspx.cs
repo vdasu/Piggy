@@ -43,6 +43,11 @@ namespace Piggy
 
         protected void RegisterButton_Click(object sender, EventArgs e)
         {
+            if(!Page.IsValid)
+            {
+                return;
+            }
+
             string sqlQuery = "INSERT INTO [Users](FName, LName, UserName, Password) values (@FName, @LName, @UserName, @Password)";
 
             if(isAdmin)
@@ -72,6 +77,30 @@ namespace Piggy
             else
             {
                 Response.Redirect("Login.aspx");
+            }
+        }
+
+        protected void usernameUniqueValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string sqlQuery = "SELECT * FROM [Users] where UserName = @userName";
+
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using(SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = sqlQuery;
+                    cmd.Parameters.AddWithValue("@username", username.Text);
+                    cmd.Connection = conn;
+                    conn.Open();
+
+                    using(SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        if (sdr.Read())
+                        {
+                            args.IsValid = false;
+                        }
+                    }
+                }
             }
         }
     }
