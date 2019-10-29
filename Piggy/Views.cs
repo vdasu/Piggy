@@ -8,8 +8,8 @@ namespace Piggy
     [Serializable]
     public class Views
     {
-        private Dictionary<string, int> viewCountDict;
-        private int maxViewCount;
+        public Dictionary<string, int> viewCountDict;
+        public int maxViewCount;
 
         public string MaxViewedRestaurant { get; set; }
 
